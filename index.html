@@ -351,8 +351,32 @@ function computeResult(){
 
   const out = document.getElementById('output');
   out.style.display='block';
-  out.innerHTML = `<h3>Resultado</h3>
-    <p><strong>Facción:</strong> ${capitalize(topFaction||'human')}</p>
+  // Traducciones bonitas
+const niceFactions = {
+  angel: "Ángel",
+  fallen: "Ángel Caído",
+  nefilim: "Nefelim",
+  cambion: "Cambión",
+  reinc: "Alma Reencarnada",
+  human: "Humano"
+};
+
+out.style.display='block';
+out.innerHTML = `<h3>Resultado</h3>
+
+    <p><strong>Facción:</strong> ${niceFactions[topFaction] || "Humano"}</p>
+    <p><strong>Rango:</strong> ${rank}</p>
+    <p><strong>Rol:</strong> ${role}</p>
+
+    <p><strong>Tarot:</strong> ${tarot.card} — <em>${tarot.meaning}</em></p>
+
+    <hr/>
+
+    <p>${descriptions[topFaction] || descriptions['human']}</p>
+
+    <p><strong>Nombres sugeridos:</strong> ${(suggestions[topFaction] || suggestions['human']).join(', ')}</p>
+`;
+
     <p><strong>Rango:</strong> ${rank}</p>
     <p><strong>Rol:</strong> ${role}</p>
     <p><strong>Tarot:</strong> ${tarot.card} — <em>${tarot.meaning}</em></p>
@@ -388,3 +412,4 @@ renderQuestions();
 </script>
 </body>
 </html>
+
